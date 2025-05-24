@@ -7,6 +7,7 @@
 <h3> Qompass AI on Linux </h3>
 
 ![Repository Views](https://komarev.com/ghpvc/?username=qompassai-linux)
+![GitHub all releases](https://img.shields.io/github/downloads/qompassai/linux/total?style=flat-square)
   <a href="https://www.kernel.org/">
   <img src="https://img.shields.io/badge/Linux-000000?style=for-the-badge&logo=linux&logoColor=white" alt="Linux">
 </a>
