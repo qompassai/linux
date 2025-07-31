@@ -1,25 +1,15 @@
 #!/bin/bash
-
-# Set error handling
 set -e
-
-# Detect OS
 if [[ "$OSTYPE" == "darwin"* ]]; then
     IS_MACOS=true
 else
     IS_MACOS=false
 fi
-
-# Common macOS arguments
 MACOS_ARGS=""
 if $IS_MACOS; then
     MACOS_ARGS="-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64 -DCMAKE_OSX_DEPLOYMENT_TARGET=10.15"
 fi
-
-# Get the current directory
 CURRENT_DIR=$(pwd)
-
-# Common arguments for all builds
 COMMON_ARGS=(
     -DCMAKE_INSTALL_PREFIX=$CURRENT_DIR/install
     -DCMAKE_PREFIX_PATH=$CURRENT_DIR/install
@@ -48,19 +38,9 @@ COMMON_ARGS=(
     -G Ninja
     $MACOS_ARGS
 )
-
-# Create build directory in the current directory
 mkdir -p build
 cd build
-
-# Configure LLVM, Clang, and LLD build
 cmake ../llvm "${COMMON_ARGS[@]}"
-
-# Build and install LLVM, Clang, and LLD
 ninja install
-
-# Return to the original directory
 cd ..
-
 echo "LLVM, Clang, and LLD build complete. Installed to $CURRENT_DIR/install"
-
